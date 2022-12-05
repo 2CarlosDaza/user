@@ -16,7 +16,7 @@ import com.parking.user.model.entity.UserEntity;
 import com.parking.user.service.UserService;
 
 @RestController
-@RequestMapping("user")
+@RequestMapping("api/user")
 public class userApi {
 	@Autowired
 	UserService service;
