@@ -52,12 +52,24 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public boolean login(LoginDto loginDto) {
-		UserEntity u=repository.findByEmail(loginDto.getEmail()).orElse(null);
+		return login(loginDto.getEmail(),loginDto.getPassword());
+	}
+
+	@Override
+	public boolean login(String email, String password) {
+		UserEntity u=repository.findByEmail(email).orElse(null);
 		if(u!=null) {
-			return bCryptService.verifyPassword(loginDto.getPassword(), u.getPassword());
+			return bCryptService.verifyPassword(password, u.getPassword());
 		}else {
 			return false;
 		}
+	}
+
+	@Override
+	public boolean cleanTests() {
+		ArrayList<UserEntity> testUsers=repository.findAllByEmail("test@test.com");
+		repository.deleteAll(testUsers);
+		return true;
 	}
 
 }

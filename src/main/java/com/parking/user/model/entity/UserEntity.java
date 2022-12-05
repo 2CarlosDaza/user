@@ -21,4 +21,11 @@ public class UserEntity {
 	private String email;
 	private String password;
 	
+	public static UserEntity defaultUser() {
+		UserEntity user= new UserEntity();
+		user.setEmail("test@test.com");
+		user.setPassword("test");
+		return user;
+	}
+	
 }

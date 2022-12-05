@@ -12,4 +12,6 @@ public interface UserService {
 	UserEntity saveUser(UserEntity u);
 	boolean deleteUserById(Integer id);
 	boolean login(LoginDto loginDto);
+	boolean login(String mail,String password);
+	boolean cleanTests();
 }
